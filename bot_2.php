@@ -1,8 +1,8 @@
 <?
 
-define('LINE_MESSAGE_CHANNEL_ID', '1653962481');
-define('LINE_MESSAGE_CHANNEL_SECRET', '352b37a31c81d1582085b1a8e9fc45b4');
-define('LINE_MESSAGE_ACCESS_TOKEN', 'WG9rcw4u5ldT0WfwnQX87VL9nDUmRD721vz7gxWO8p6fpo24w62h06gjHU5k+ev4FuukNJY4G3rD2luz05Y+otzmtIZGhXDnJbJSNiaHr9W7As/kJALpLhVl8QLBgpK86g2gZRsPQ/wqjdhvULFbzgdB04t89/1O/w1cDnyilFU=');
+define('LINE_MESSAGE_CHANNEL_ID', '1653962583');
+define('LINE_MESSAGE_CHANNEL_SECRET', 'a907165cb16817404ab203620cbe9fe6');
+define('LINE_MESSAGE_ACCESS_TOKEN', 'E8J7R3AojuWoZIwnVr1DnW7kINJiSxQxm300gBm2U4vtz38yaelGTD7dzL1PHhxLzRJopPKocwdVw4Em17nYAlzV8Ux+gOIAiT7oQiNac4D84OoMD9VZ1LVF72JQecvWhzfeDBWNcO7EMlft0cHmmQdB04t89/1O/w1cDnyilFU=');
 
 // กรณีต้องการตรวจสอบการแจ้ง error ให้เปิด 3 บรรทัดล่างนี้ให้ทำงาน กรณีไม่ ให้ comment ปิดไป
 ini_set('display_errors', 1);
