@@ -1,0 +1,10 @@
+1. cd directory
+2.git init
+3.heroku login
+4.heroku git:remote -a [project heroku name]
+5.git add
+6.git add .
+8.git push heroku master
+9.git add filename.php
+10.git commit -m "Add file filename.php"
+11.git push heroku master
