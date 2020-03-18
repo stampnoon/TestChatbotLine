@@ -72,8 +72,8 @@ if (!is_null($events)) {
   switch ($typeMessage) {
     case 'text':
       switch ($userMessage) {
-        case "hello":
-          $textReplyMessage = 'ควยสแตม';
+        case "hello2":
+          $textReplyMessage = '2222222222222222222222';
           $replyData = new TextMessageBuilder($textReplyMessage);
           $response = $bot->replyMessage($replyToken, $replyData);
           break;
