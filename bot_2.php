@@ -64,26 +64,27 @@ $content = file_get_contents('php://input');
 // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
 $events = json_decode($content, true);
 if (!is_null($events)) {
-  // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
-  $replyToken = $events['events'][0]['replyToken'];
-  $typeMessage = $events['events'][0]['message']['type'];
-  $userMessage = $events['events'][0]['message']['text'];
-  $userMessage = strtolower($userMessage);
-  switch ($typeMessage) {
-    case 'text':
-      switch ($userMessage) {
-        case "hello2":
-          $textReplyMessage = '2222222222222222222222';
-          $replyData = new TextMessageBuilder($textReplyMessage);
-          $response = $bot->replyMessage($replyToken, $replyData);
-          break;
-      }
-      break;
-    default:
-      $textReplyMessage = json_encode($events);
-      $replyData = new TextMessageBuilder($textReplyMessage);
-      break;
-  }
+    // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
+    $replyToken = $events['events'][0]['replyToken'];
+    $typeMessage = $events['events'][0]['message']['type'];
+    $userMessage = $events['events'][0]['message']['text'];
+    $userMessage = strtolower($userMessage);
+    switch ($typeMessage) {
+        case 'text':
+            switch ($userMessage) {
+                case "hello2":
+                    $textReplyMessage = '2222222222222222222222';
+                    $replyData = new TextMessageBuilder($textReplyMessage);
+
+                    break;
+            }
+            break;
+        default:
+            $textReplyMessage = json_encode($events);
+            $replyData = new TextMessageBuilder($textReplyMessage);
+            break;
+    }
+    $response = $bot->replyMessage($replyToken, $replyData);
 }
 //l ส่วนของคำสั่งตอบกลับข้อความ
 

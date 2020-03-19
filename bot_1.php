@@ -72,13 +72,31 @@ if (!is_null($events)) {
     switch ($typeMessage) {
         case 'text':
             switch ($userMessage) {
-                case "hello1":
+                case "1":
                     $textReplyMessage = '111111111111111111111111111';
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
-                case "hello2":
+                case "2":
                     $textReplyMessage = '222222222222222222222222222';
                     $replyData = new TextMessageBuilder($textReplyMessage);
+                    break;
+                case "pic":
+                    $imageMapUrl = 'https://www.mywebsite.com/imgsrc/photos/w/sampleimagemap';
+                    $replyData = new ImagemapMessageBuilder(
+                        $imageMapUrl,
+                        'This is Title',
+                        new BaseSizeBuilder(699, 1040),
+                        array(
+                            new ImagemapMessageActionBuilder(
+                                'test image map',
+                                new AreaBuilder(0, 0, 520, 699)
+                            ),
+                            new ImagemapUriActionBuilder(
+                                'http://www.ninenik.com',
+                                new AreaBuilder(520, 0, 520, 699)
+                            )
+                        )
+                    );
                     break;
             }
             break;
