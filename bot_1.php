@@ -65,11 +65,11 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 $eventObj = $events[0];
 
-$eventType = $eventObj->getType();
+//$eventType = $eventObj->getType();
 
 if (!is_null($events)) {
 
-    $token = strval($eventType);
+    //$token = strval($eventType);
 
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
