@@ -81,7 +81,7 @@ if (!is_null($events)) {
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
                 case "pic":
-                    $imageMapUrl = 'https://www.img.in.th/image/TbT8sp';
+                    $imageMapUrl = 'https://www.img.in.th/image/TbT8sp?_ignore=';
                     $replyData = new ImagemapMessageBuilder(
                         $imageMapUrl,
                         'This is Title',
