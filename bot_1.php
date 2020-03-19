@@ -68,11 +68,13 @@ $hash = hash_hmac('sha256', $content, LINE_MESSAGE_CHANNEL_SECRET, true);
 $signature = base64_encode($hash);
 $events = $bot->parseEventRequest($content, $signature);
 $eventObj = $events[0];
+
+$eventType = $eventObj->getType();
 //--
 
 if (!is_null($events)) {
 
-    $test = strval($eventObj);
+    $test = strval($eventType);
 
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
