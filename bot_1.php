@@ -69,6 +69,7 @@ if (!is_null($events)) {
     $typeMessage = $events['events'][0]['message']['type'];
     $userMessage = $events['events'][0]['message']['text'];
     $userMessage = strtolower($userMessage);
+    $token = strval($replyToken);
     switch ($typeMessage) {
         case 'text':
             switch ($userMessage) {
@@ -102,77 +103,8 @@ if (!is_null($events)) {
                         )
                     );
                     break;
-                case "สมัคร":
-                    $imageMapUrl = 'https://www.pic2free.com/uploads/20200311/ab4364db41db57f34d4a0aa0b22573946da8a6c4.png?_ignore=';
-                    $replyData = new ImagemapMessageBuilder(
-                        $imageMapUrl,
-                        9 +
-                            'test',
-                        new BaseSizeBuilder(2000, 1040),
-                        array(
-                            new ImagemapMessageActionBuilder(
-                                'โปร1',
-                                new AreaBuilder(11, 148, 1020, 116)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร2',
-                                new AreaBuilder(11, 272, 1020, 114)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร3',
-                                new AreaBuilder(11, 395, 1018, 113)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร4',
-                                new AreaBuilder(11, 515, 1017, 115)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร5',
-                                new AreaBuilder(14, 638, 1015, 119)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร6',
-                                new AreaBuilder(11, 762, 1020, 112)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร7',
-                                new AreaBuilder(11, 882, 1018, 112)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร8',
-                                new AreaBuilder(11, 1006, 1018, 111)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร9',
-                                new AreaBuilder(11, 1127, 1018, 112)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร10',
-                                new AreaBuilder(11, 1248, 1017, 113)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร11',
-                                new AreaBuilder(11, 1369, 1018, 114)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร12',
-                                new AreaBuilder(12, 1492, 1017, 113)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร13',
-                                new AreaBuilder(11, 1615, 1020, 112)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'โปร14',
-                                new AreaBuilder(12, 1738, 1017, 112)
-                            ),
-                            new ImagemapMessageActionBuilder(
-                                'ย้อนกลับMain',
-                                new AreaBuilder(11, 1859, 1018, 111)
-                            ),
-                        ),
-                        $quickReplyMain
-                    );
+                case "4":
+                    $replyData = new TextMessageBuilder($token);
                     break;
             }
             break;
