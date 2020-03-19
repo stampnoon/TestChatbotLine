@@ -85,7 +85,7 @@ if (!is_null($events)) {
                     $replyData = new ImagemapMessageBuilder(
                         $imageMain,
                         'test',
-                        new BaseSizeBuilder(800, 1040),
+                        new BaseSizeBuilder(400, 1040),
                         array(
                             new ImagemapMessageActionBuilder(
                                 'สอบถาม',
@@ -103,7 +103,7 @@ if (!is_null($events)) {
                     );
                     break;
                 case "สมัคร":
-                    $imageMapUrl = 'https://drive.google.com/file/d/172tMoujX619fgqfN7x5hYOlnB9A6dN-e/view?usp=sharing?_ignore=';
+                    $imageMapUrl = 'https://www.pic2free.com/uploads/20200311/ab4364db41db57f34d4a0aa0b22573946da8a6c4.png?_ignore=';
                     $replyData = new ImagemapMessageBuilder(
                         $imageMapUrl,
                         9 +
