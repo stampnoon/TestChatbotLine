@@ -72,7 +72,7 @@ $eventObj = $events[0];
 
 if (!is_null($events)) {
 
-    $token = strval($events);
+    $test = strval($eventObj);
 
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
@@ -114,7 +114,7 @@ if (!is_null($events)) {
                     );
                     break;
                 case "4":
-                    $replyData = new TextMessageBuilder($token);
+                    $replyData = new TextMessageBuilder($test);
                     break;
             }
             break;
