@@ -85,7 +85,7 @@ if (!is_null($events)) {
                     $replyData = new ImagemapMessageBuilder(
                         $imageMain,
                         'test',
-                        new BaseSizeBuilder(420, 1040),
+                        new BaseSizeBuilder(800, 1040),
                         array(
                             new ImagemapMessageActionBuilder(
                                 'สอบถาม',
