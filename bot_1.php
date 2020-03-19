@@ -63,20 +63,13 @@ $content = file_get_contents('php://input');
 // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
 // แปลงข้อความรูปแบบ JSON  ให้อยู่ในโครงสร้างตัวแปร array
 $events = json_decode($content, true);
-$eventObj = $events[0];
-
-$eventType = $eventObj->getType();
-
 if (!is_null($events)) {
-
-    $token = strval($eventType);
-
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
     $replyToken = $events['events'][0]['replyToken'];
     $typeMessage = $events['events'][0]['message']['type'];
     $userMessage = $events['events'][0]['message']['text'];
     $userMessage = strtolower($userMessage);
-
+    $token = strval($replyToken);
     switch ($typeMessage) {
         case 'text':
             switch ($userMessage) {
@@ -109,9 +102,6 @@ if (!is_null($events)) {
                             ),
                         )
                     );
-                    break;
-                case "4":
-                    $replyData = new TextMessageBuilder($token);
                     break;
             }
             break;
