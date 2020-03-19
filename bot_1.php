@@ -81,7 +81,7 @@ if (!is_null($events)) {
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
                 case "pic":
-                    $imageMapUrl = 'https://www.mywebsite.com/imgsrc/photos/w/sampleimagemap';
+                    $imageMapUrl = 'https://www.pic2free.com/uploads/20200311/0f2a99163fd6712f73d04da793c78d13e13e6f7a.png';
                     $replyData = new ImagemapMessageBuilder(
                         $imageMapUrl,
                         'This is Title',
