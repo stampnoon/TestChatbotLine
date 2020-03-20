@@ -71,6 +71,8 @@ if (!is_null($events)) {
     $replyToken = $events['events'][0]['replyToken'];
     $typeMessage = $events['events'][0]['message']['type'];
     $userMessage = $events['events'][0]['message']['text'];
+    $id = $events['events'][0]['source']['userId'];
+
     $userMessage = strtolower($userMessage);
     $token = strval($replyToken);
     switch ($typeMessage) {
@@ -83,6 +85,18 @@ if (!is_null($events)) {
                 case "2":
                     $textReplyMessage = '222222222222222222222222222';
                     $replyData = new TextMessageBuilder($textReplyMessage);
+                    break;
+                case "3":
+                    $replyData = new TextMessageBuilder($id);
+                    break;
+                case "4":
+                    $responseProfile = $bot->getProfile(LINE_USER_ID);
+                    $profile = $responseProfile->getJSONDecodedBody();
+                    $textReplyMessage = $profile['displayName']; //can get 'displayName', 'userId', 'pictureUrl', 'statusMessage'
+                    $replyData = new TextMessageBuilder($textReplyMessage);
+                    $pushResponse = 'Push';
+                    //$response = $bot->replyMessage($replyToken, $replyData);
+                    $response = $bot->pushMessage('U038a8b215cd7cc765f7a8380c2f86683', new TextMessageBuilder($replyData));
                     break;
                 case "เริ่ม":
                     $imageMain = 'https://www.pic2free.com/uploads/20200311/0f2a99163fd6712f73d04da793c78d13e13e6f7a.png?_ignore=';
@@ -106,15 +120,6 @@ if (!is_null($events)) {
                         )
                     );
                     break;
-                case "4":
-                    $responseProfile = $bot->getProfile(LINE_USER_ID);
-                    $profile = $responseProfile->getJSONDecodedBody();
-                    $textReplyMessage = $profile['displayName']; //can get 'displayName', 'userId', 'pictureUrl', 'statusMessage'
-                    $replyData = new TextMessageBuilder($textReplyMessage);
-                    $pushResponse = 'Push';
-                    //$response = $bot->replyMessage($replyToken, $replyData);
-                    $response = $bot->pushMessage('U038a8b215cd7cc765f7a8380c2f86683', new TextMessageBuilder($replyData));
-                    break;
             }
             break;
         default:
@@ -123,9 +128,9 @@ if (!is_null($events)) {
             break;
     }
     //Response message
-    if (is_null($pushResponse)) {
+    //if (is_null($pushResponse)) {
         $response = $bot->replyMessage($replyToken, $replyData);
-    }
+    //}
     // else
     // {
     //     $response = $bot->pushMessage('stampnight', new TextMessageBuilder('Push success'));
