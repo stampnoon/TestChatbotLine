@@ -3,6 +3,7 @@
 define('LINE_MESSAGE_CHANNEL_ID', '1653962481');
 define('LINE_MESSAGE_CHANNEL_SECRET', '352b37a31c81d1582085b1a8e9fc45b4');
 define('LINE_MESSAGE_ACCESS_TOKEN', 'WG9rcw4u5ldT0WfwnQX87VL9nDUmRD721vz7gxWO8p6fpo24w62h06gjHU5k+ev4FuukNJY4G3rD2luz05Y+otzmtIZGhXDnJbJSNiaHr9W7As/kJALpLhVl8QLBgpK86g2gZRsPQ/wqjdhvULFbzgdB04t89/1O/w1cDnyilFU=');
+define('LINE_USER_ID', 'U038a8b215cd7cc765f7a8380c2f86683');
 
 // กรณีต้องการตรวจสอบการแจ้ง error ให้เปิด 3 บรรทัดล่างนี้ให้ทำงาน กรณีไม่ ให้ comment ปิดไป
 ini_set('display_errors', 1);
@@ -106,13 +107,13 @@ if (!is_null($events)) {
                     );
                     break;
                 case "4":
-                    $responseProfile = $bot->getProfile('U038a8b215cd7cc765f7a8380c2f86683');
+                    $responseProfile = $bot->getProfile(LINE_USER_ID);
                     $profile = $responseProfile->getJSONDecodedBody();
                     $textReplyMessage = $profile['displayName']; //can get 'displayName', 'userId', 'pictureUrl', 'statusMessage'
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     $pushResponse = 'Push';
-                    $response = $bot->replyMessage($replyToken, $replyData);
-                    $response = $bot->pushMessage('stampnight', new TextMessageBuilder('Push success'));
+                    //$response = $bot->replyMessage($replyToken, $replyData);
+                    $response = $bot->pushMessage(LINE_USER_ID, new TextMessageBuilder($replyData));
                     break;
             }
             break;
