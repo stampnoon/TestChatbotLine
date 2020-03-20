@@ -113,7 +113,7 @@ if (!is_null($events)) {
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     $pushResponse = 'Push';
                     //$response = $bot->replyMessage($replyToken, $replyData);
-                    $response = $bot->pushMessage(LINE_USER_ID, new TextMessageBuilder($replyData));
+                    $response = $bot->pushMessage('U038a8b215cd7cc765f7a8380c2f86683', new TextMessageBuilder($replyData));
                     break;
             }
             break;
