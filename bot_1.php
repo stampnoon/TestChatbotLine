@@ -111,6 +111,7 @@ if (!is_null($events)) {
                     $textReplyMessage = $profile['displayName']; //can get 'displayName', 'userId', 'pictureUrl', 'statusMessage'
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     $pushResponse = 'Push';
+                    $response = $bot->replyMessage($replyToken, $replyData);
                     $response = $bot->pushMessage('stampnight', new TextMessageBuilder('Push success'));
                     break;
             }
