@@ -121,11 +121,10 @@ if (!is_null($events)) {
             $replyData = new TextMessageBuilder($textReplyMessage);
             break;
     }
-
     //Response message
-    // if (is_null($pushResponse)) {
-    //     $response = $bot->replyMessage($replyToken, $replyData);
-    // }
+    if (is_null($pushResponse)) {
+        $response = $bot->replyMessage($replyToken, $replyData);
+    }
     // else
     // {
     //     $response = $bot->pushMessage('stampnight', new TextMessageBuilder('Push success'));
