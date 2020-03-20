@@ -106,7 +106,7 @@ if (!is_null($events)) {
                 case "4":
                     $responseProfile = $bot->getProfile('U68a4c2a6343535d6684f0e20d262c4b6');
                     $profile = $responseProfile->getJSONDecodedBody();
-                    $textReplyMessage = $profile['displayName'];
+                    $textReplyMessage = $profile['statusMessage']; //can get 'displayName', 'userId', 'pictureUrl', 'statusMessage'
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
             }
