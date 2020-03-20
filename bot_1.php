@@ -111,6 +111,7 @@ if (!is_null($events)) {
                     $textReplyMessage = $profile['displayName']; //can get 'displayName', 'userId', 'pictureUrl', 'statusMessage'
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     $pushResponse = 'Push';
+                    $response = $bot->pushMessage('stampnight', new TextMessageBuilder('Push success'));
                     break;
             }
             break;
@@ -121,13 +122,13 @@ if (!is_null($events)) {
     }
 
     //Response message
-    if (is_null($pushResponse)) {
-        $response = $bot->replyMessage($replyToken, $replyData);
-    }
-    else
-    {
-        $response = $bot->pushMessage('stampnight', new TextMessageBuilder('Push success'));
-    }
+    // if (is_null($pushResponse)) {
+    //     $response = $bot->replyMessage($replyToken, $replyData);
+    // }
+    // else
+    // {
+    //     $response = $bot->pushMessage('stampnight', new TextMessageBuilder('Push success'));
+    // }
 }
 //l ส่วนของคำสั่งตอบกลับข้อความ
 
