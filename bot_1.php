@@ -92,11 +92,14 @@ if (!is_null($events)) {
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     break;
                 case "4":
+                    $httpClient_push = new CurlHTTPClient('E8J7R3AojuWoZIwnVr1DnW7kINJiSxQxm300gBm2U4vtz38yaelGTD7dzL1PHhxLzRJopPKocwdVw4Em17nYAlzV8Ux+gOIAiT7oQiNac4D84OoMD9VZ1LVF72JQecvWhzfeDBWNcO7EMlft0cHmmQdB04t89/1O/w1cDnyilFU=');
+                    $bot_push = new LINEBot($httpClient_push, array('channelSecret' => 'a907165cb16817404ab203620cbe9fe6'));
+
                     $pushResponse = 'Push';
-                    $textReplyMessage = '44444444444'; 
+                    $textReplyMessage = '44444444444';
                     $replyData = new TextMessageBuilder($textReplyMessage);
                     //$response = $bot->replyMessage($replyToken, $replyData);
-                    $response = $bot->pushMessage('stampnight', new TextMessageBuilder('push'));
+                    $response = $bot_push->pushMessage('stampnight', new TextMessageBuilder('push'));
                     break;
                 case "เริ่ม":
                     $imageMain = 'https://www.pic2free.com/uploads/20200311/0f2a99163fd6712f73d04da793c78d13e13e6f7a.png?_ignore=';
@@ -129,7 +132,7 @@ if (!is_null($events)) {
     }
     //Response message
     //if (is_null($pushResponse)) {
-        $response = $bot->replyMessage($replyToken, $replyData);
+    $response = $bot->replyMessage($replyToken, $replyData);
     //}
     // else
     // {
