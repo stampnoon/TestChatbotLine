@@ -1,8 +1,8 @@
 <?
 
-define('LINE_MESSAGE_CHANNEL_ID', '1653962583');
-define('LINE_MESSAGE_CHANNEL_SECRET', 'a907165cb16817404ab203620cbe9fe6');
-define('LINE_MESSAGE_ACCESS_TOKEN', 'E8J7R3AojuWoZIwnVr1DnW7kINJiSxQxm300gBm2U4vtz38yaelGTD7dzL1PHhxLzRJopPKocwdVw4Em17nYAlzV8Ux+gOIAiT7oQiNac4D84OoMD9VZ1LVF72JQecvWhzfeDBWNcO7EMlft0cHmmQdB04t89/1O/w1cDnyilFU=');
+define('LINE_MESSAGE_CHANNEL_ID', '1653974731');
+define('LINE_MESSAGE_CHANNEL_SECRET', 'a6db60112d94dbaf71637285b7c247c5');
+define('LINE_MESSAGE_ACCESS_TOKEN', '9ujxTQEVVekY4lzpKtRw7akfHU6i5UmVtHaf2HkuarTgpz79DTt8uAGUE3lnBZBEDQYPxZM9MGLVpA+AkSDoTkWSxz4s29AXXwGj3YBBy5xXXRPaAQ80H5qMj41qF4H1BbV6EFM6nENelX6Kg5uh6AdB04t89/1O/w1cDnyilFU=');
 
 // กรณีต้องการตรวจสอบการแจ้ง error ให้เปิด 3 บรรทัดล่างนี้ให้ทำงาน กรณีไม่ ให้ comment ปิดไป
 ini_set('display_errors', 1);
@@ -68,14 +68,60 @@ if (!is_null($events)) {
     $replyToken = $events['events'][0]['replyToken'];
     $typeMessage = $events['events'][0]['message']['type'];
     $userMessage = $events['events'][0]['message']['text'];
+    $id = $events['events'][0]['source']['userId'];
+
     $userMessage = strtolower($userMessage);
+    $token = strval($replyToken);
     switch ($typeMessage) {
         case 'text':
             switch ($userMessage) {
-                case "hello2":
-                    $textReplyMessage = '2222222222222222222222';
+                case "1":
+                    $textReplyMessage = '111111111111111111111111111';
                     $replyData = new TextMessageBuilder($textReplyMessage);
-
+                    break;
+                case "2":
+                    $textReplyMessage = '222222222222222222222222222';
+                    $replyData = new TextMessageBuilder($textReplyMessage);
+                    break;
+                case "3":
+                    $responseProfile = $bot->getProfile($id);
+                    $profile = $responseProfile->getJSONDecodedBody();
+                    $textReplyMessage = $profile['displayName']; //can get 'displayName', 'userId', 'pictureUrl', 'statusMessage'
+                    $replyData = new TextMessageBuilder($textReplyMessage);
+                    break;
+                case "4":
+                    //Send to line_Bot2
+                    $pushResponse = 'Push';
+                    // $httpClient_push = new CurlHTTPClient('E8J7R3AojuWoZIwnVr1DnW7kINJiSxQxm300gBm2U4vtz38yaelGTD7dzL1PHhxLzRJopPKocwdVw4Em17nYAlzV8Ux+gOIAiT7oQiNac4D84OoMD9VZ1LVF72JQecvWhzfeDBWNcO7EMlft0cHmmQdB04t89/1O/w1cDnyilFU=');
+                    // $bot_push = new LINEBot($httpClient_push, array('channelSecret' => 'a907165cb16817404ab203620cbe9fe6'));
+                    //$responseProfile = $bot->getProfile($id);
+                    //$profile = $responseProfile->getJSONDecodedBody();
+                    //$textReplyMessage = $profile['displayName'];
+                    $replyData = new TextMessageBuilder('33333333333333333333333333333');
+                    //$response = $bot->replyMessage($replyToken, $replyData);
+                    $response = $bot->pushMessage('Uc5d9862b023a17abebee4eca1cb16f3c', $replyData);
+                    break;
+                case "เริ่ม":
+                    $imageMain = 'https://www.pic2free.com/uploads/20200311/0f2a99163fd6712f73d04da793c78d13e13e6f7a.png?_ignore=';
+                    $replyData = new ImagemapMessageBuilder(
+                        $imageMain,
+                        'test',
+                        new BaseSizeBuilder(400, 1040),
+                        array(
+                            new ImagemapMessageActionBuilder(
+                                'สอบถาม',
+                                new AreaBuilder(4, 113, 337, 281)
+                            ),
+                            new ImagemapMessageActionBuilder(
+                                'สมัคร',
+                                new AreaBuilder(348, 112, 340, 283)
+                            ),
+                            new ImagemapMessageActionBuilder(
+                                'ติดต่อ',
+                                new AreaBuilder(693, 111, 338, 283)
+                            ),
+                        )
+                    );
                     break;
             }
             break;
@@ -84,7 +130,14 @@ if (!is_null($events)) {
             $replyData = new TextMessageBuilder($textReplyMessage);
             break;
     }
-    $response = $bot->replyMessage($replyToken, $replyData);
+    //Response message
+    if (is_null($pushResponse)) {
+        $response = $bot->replyMessage($replyToken, $replyData);
+    } else {
+        if ($response->isSucceeded()) {
+            $response = $bot->replyMessage($replyToken, new TextMessageBuilder('Send to Bot2 success'));
+        }
+    }
 }
 //l ส่วนของคำสั่งตอบกลับข้อความ
 
